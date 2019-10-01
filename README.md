@@ -1,1 +1,2 @@
-# thingsboard-extension
+# Extension ThingsBoard Platform
+
