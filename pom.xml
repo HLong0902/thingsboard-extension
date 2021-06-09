@@ -24,6 +24,7 @@
 
     <modules>
         <module>widgets</module>
+        <module>tb-node</module>
     </modules>
 
     <profiles>
