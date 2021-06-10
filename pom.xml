@@ -24,7 +24,7 @@
 
     <modules>
         <module>widgets</module>
-        <module>tb-node</module>
+        <module>thingsboard-extension-docker</module>
     </modules>
 
     <profiles>
