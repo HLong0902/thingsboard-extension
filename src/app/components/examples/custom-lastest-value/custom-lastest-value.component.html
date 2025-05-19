@@ -1,0 +1,13 @@
+<div class="card" *ngIf="datas">
+  <div *ngFor="let data of datas">
+    <div class="info-row" *ngIf="data">
+      <div class="info-label">{{ data.key }}</div>
+      <span>&nbsp;&nbsp;</span>
+      <div class="badge">
+        <span class="badge-info">{{ data.value }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+

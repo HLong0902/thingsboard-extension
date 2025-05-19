@@ -1,0 +1,53 @@
+{
+  "type": "latest",
+  "resources": [],
+  "template": {
+    "widgetType": "custom-attributes-value",
+    "type": "latest",
+    "title": "Custom Attributes Value",
+    "sizeX": 4,
+    "sizeY": 3,
+    "config": {
+      "datasources": [
+        {
+          "type": "attributes",
+          "dataKeys": [
+            {
+              "name": "temperature",
+              "type": "attribute",
+              "label": "Nhiệt độ"
+            },
+            {
+              "name": "humidity",
+              "type": "attribute",
+              "label": "Độ ẩm"
+            }
+          ]
+        }
+      ],
+      "settings": {
+        "component": "tb-custom-attributes-value",
+        "settingsSchema": {
+          "type": "object",
+          "title": "Settings",
+          "schema": {
+            "type": "object",
+            "title": "Settings",
+            "properties": {
+              "scope": {
+                "title": "Scope",
+                "type": "string",
+                "default": "SERVER_SCOPE"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "widgetType": "custom-attributes-value",
+  "description": "Hiển thị giá trị attributes của thiết bị",
+  "images": [
+    "/examples/images/custom-attributes-value-images/preview.png"
+  ]
+}

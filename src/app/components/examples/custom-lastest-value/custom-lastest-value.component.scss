@@ -1,0 +1,38 @@
+.card {
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  padding: 8px 16px;
+}
+
+.tb-widget {
+  border-radius: 8px;
+}
+.info-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+
+  .info-label {
+    min-width: fit-content;
+    font-size: 12px;
+    font-weight: 400;
+    color: #555;
+  }
+
+  .badge {
+    background: #f0f0f0;
+    width: fit-content;
+    border-radius: 6px;
+    border: #d4d4d4 1px solid;
+    padding: 8px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .badge-info {
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+}

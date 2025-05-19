@@ -22,7 +22,7 @@ export class ThingsboardExtensionWidgetsModule {
 
   constructor(translate: TranslateService) {
     addCustomWidgetLocale(translate);
-    addLibraryStyles('tb-extension-css');
+    addLibraryStyles('tb-nhl-extension-css');
   }
 
 }

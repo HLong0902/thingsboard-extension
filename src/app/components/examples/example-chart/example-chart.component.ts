@@ -99,13 +99,13 @@ export class ExampleChartComponent implements OnInit, AfterViewInit {
       },
       grid: [{
         backgroundColor: null,
-        borderColor: "#ccc",
+        borderColor: "transparent",
         borderWidth: 1,
         bottom: 45,
         left: 5,
         right: 5,
         show: false,
-        top: 10
+        top: 20
       }],
       xAxis: [this.xAxis],
       yAxis: [this.yAxis],
@@ -119,7 +119,7 @@ export class ExampleChartComponent implements OnInit, AfterViewInit {
         },
         {
           type: 'slider',
-          show: true,
+          show: false,
           showDetail: false,
           realtime: true,
           filterMode: 'none',
@@ -166,10 +166,10 @@ export class ExampleChartComponent implements OnInit, AfterViewInit {
     const bottomOffset = calculateAxisSize(this.myChart, this.xAxis.mainType,  this.xAxis.id as string);
     const bottomNameSize = measureAxisNameSize(this.myChart, this.yAxis.mainType, this.yAxis.id as string, this.yAxis.name);
     const newGridLeft = leftOffset + leftNameSize;
-    const newGridBottom = bottomOffset + bottomNameSize + 35;
+    const newGridBottom = bottomOffset + bottomNameSize;
     if (this.option.grid[0].left !== newGridLeft || this.option.grid[0].bottom !== newGridBottom) {
       this.option.grid[0].left = newGridLeft;
-      this.yAxis.nameGap = leftOffset;
+      // this.yAxis.nameGap = leftOffset;
       this.option.grid[0].bottom = newGridBottom;
       this.xAxis.nameGap = bottomOffset;
       this.myChart.setOption(this.option, {replaceMerge: ['yAxis', 'xAxis', 'grid'], lazyUpdate: lazy});
@@ -353,9 +353,9 @@ export class ExampleChartComponent implements OnInit, AfterViewInit {
       mainType: 'yAxis',
       id: 'yAxis',
       offset: 0,
-      name: 'YAxis',
-      nameLocation: 'middle',
-      nameRotate: 90,
+      name: '',
+      nameLocation: 'end',
+      nameRotate: 0,
       alignTicks: true,
       scale: true,
       show: true,
@@ -366,31 +366,44 @@ export class ExampleChartComponent implements OnInit, AfterViewInit {
         fontStyle: 'normal',
         fontWeight: 400,
         show: true,
-        formatter: (value: any) => {
-          return  formatValue(value, this.ctx.decimals,  this.ctx.units, false);
+        formatter: (value: any, index) => {
+          // @ts-ignore
+          if (value === this.myChart.getModel().getComponent('yAxis').axis.scale.getExtent()[1]) {
+            return this.ctx.units;
+          }
+          return  formatValue(value, this.ctx.decimals,  '', false);
         }
       },
       splitLine: {
         show: true,
+        lineStyle: {
+          color: '#BFBFBF',
+          width: 1,
+          type: 'solid'
+        }
       },
       axisLine: {
         show: true,
+        symbol: ['none', 'arrow'],
+        symbolSize: [8, 8],
+        symbolOffset: [0, 4],
         lineStyle: {
-          color: 'rgba(0, 0, 0, 0.54)'
+          color: '#BFBFBF',
+          width: 3
         }
       },
       axisTick: {
-        lineStyle: {
-          color: 'rgba(0, 0, 0, 0.54)'
-        },
-        show: true
+        show: false
       },
       nameTextStyle: {
         color: 'rgba(0, 0, 0, 0.54)',
         fontFamily: 'Roboto',
         fontSize: 12,
         fontStyle: 'normal',
-        fontWeight: 600
+        fontWeight: 600,
+        align: 'right',
+        verticalAlign: 'top',
+        padding: [0, 0, 0, 0],
       }
     }
   }
@@ -401,12 +414,13 @@ export class ExampleChartComponent implements OnInit, AfterViewInit {
       mainType: 'xAxis',
       show: true,
       type: 'time',
-      position: "bottom",
-      name: 'XAxis',
-      offset: 0,
+      position: 'right',
+      // name: 'XAxis',
+      offset: 1,
       nameLocation: 'middle',
       max:  this.ctx.defaultSubscription.timeWindow.maxTime,
       min:  this.ctx.defaultSubscription.timeWindow.minTime,
+      nameGap: 30,
       nameTextStyle: {
         color: 'rgba(0, 0, 0, 0.54)',
         fontStyle: 'normal',
@@ -420,19 +434,20 @@ export class ExampleChartComponent implements OnInit, AfterViewInit {
         }
       },
       splitLine: {
-        show: true
+        show: false
       },
       axisTick: {
-        show: true,
-        lineStyle: {
-          color: 'rgba(0, 0, 0, 0.54)'
-        }
+        show: false
       },
       axisLine: {
         onZero: false,
         show: true,
+        symbol: ['none', 'arrow'],
+        symbolSize: [8, 8],
+        symbolOffset: [4, 0],
         lineStyle: {
-          color: 'rgba(0, 0, 0, 0.54)'
+          color: '#BFBFBF',
+          width: 3
         }
       },
       axisLabel: {

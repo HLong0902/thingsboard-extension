@@ -31,6 +31,8 @@ import { ExampleChartComponent } from './example-chart/example-chart.component';
 import {
   ExampleChartSettingsComponent
 } from './example-chart/chart-settings/example-chart-settings.component';
+import {CustomLastestValueComponent} from "./custom-lastest-value/custom-lastest-value.component";
+import {CustomAttributesValueComponent} from "./custom-attributes-value/custom-attributes-value.component";
 
 @NgModule({
   declarations: [
@@ -43,7 +45,8 @@ import {
     ExampleTableCustomSubscriptionComponent,
     ExampleOfUsingThirdPartyLibraryComponent,
     ExampleChartComponent,
-    ExampleChartSettingsComponent
+    ExampleChartSettingsComponent,
+    CustomLastestValueComponent
   ],
   imports: [
     CommonModule,
@@ -51,7 +54,8 @@ import {
     HomeComponentsModule,
     ChartModule,
     BasicWidgetConfigModule,
-    WidgetConfigComponentsModule
+    WidgetConfigComponentsModule,
+    CustomAttributesValueComponent
   ],
   exports: [
     ExampleTableComponent,
@@ -63,7 +67,9 @@ import {
     ExampleTableCustomSubscriptionComponent,
     ExampleOfUsingThirdPartyLibraryComponent,
     ExampleChartComponent,
-    ExampleChartSettingsComponent
+    ExampleChartSettingsComponent,
+    CustomLastestValueComponent,
+    CustomAttributesValueComponent
   ]
 })
 

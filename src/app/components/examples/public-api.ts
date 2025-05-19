@@ -10,3 +10,5 @@ export * from './example-table-with-custom-subscription/example-table-custom-sub
 export * from './example-of-using-third-party-library/example-of-using-third-party-library.component';
 export * from './example-chart/example-chart.component';
 export * from './example-chart/chart-settings/example-chart-settings.component';
+export * from './custom-lastest-value/custom-lastest-value.component';
+export * from './custom-attributes-value/custom-attributes-value.component';

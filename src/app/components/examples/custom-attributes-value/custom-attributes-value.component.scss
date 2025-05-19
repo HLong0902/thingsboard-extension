@@ -1,0 +1,15 @@
+.attribute-item {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+
+  .attribute-key {
+    font-weight: 500;
+    color: var(--primary-color);
+  }
+
+  .attribute-value {
+    color: var(--text-color);
+  }
+}

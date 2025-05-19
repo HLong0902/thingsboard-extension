@@ -7,6 +7,7 @@ $maxLegendHeight: 35%;
   position: relative;
   display: flex;
   flex-direction: column;
+  background-color: white;
   gap: 8px;
   padding: 12px;
   > div:not(.tb-time-series-chart-overlay) {
@@ -26,6 +27,7 @@ $maxLegendHeight: 35%;
     flex: 1;
     min-width: 0;
     min-height: 0;
+    height: 100%;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -69,13 +71,14 @@ $maxLegendHeight: 35%;
     }
     .tb-time-series-chart-legend {
       display: flex;
-      align-items: flex-start;
-      align-self: stretch;
+      align-items: center;
+      justify-content: center;
+      align-self: center;
       column-gap: 16px;
       row-gap: 8px;
       flex-wrap: wrap;
       overflow: auto;
-      width: fit-content;
+      width: 100%;
       max-width: 100%;
       max-height: calc($maxLegendHeight - 8px);
       .tb-time-series-chart-legend-table {
