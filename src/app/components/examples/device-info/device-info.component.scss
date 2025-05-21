@@ -1,0 +1,48 @@
+:host {
+  display: block;
+  height: 100%;
+
+  .example-table {
+    height: 100%;
+
+    .header {
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 36px;
+      color: black;
+    }
+  }
+}
+
+.info-row {
+  display: flex;
+  align-items: center;
+  //margin-bottom: 8px;
+
+  .info-label {
+    min-width: fit-content;
+    font-size: 12px;
+    font-weight: 400;
+    color: #555;
+  }
+
+  .badge {
+    background: #f0f0f0;
+    width: fit-content;
+    border-radius: 6px;
+    border: #d4d4d4 1px solid;
+    padding: 8px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  .badge-info {
+    padding: 4px 8px;
+    font-size: 12px;
+    font-weight: bold;
+  }
+
+  &:last-child .badge-info {
+    padding-bottom: 0;
+  }
+}

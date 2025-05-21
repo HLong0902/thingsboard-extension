@@ -33,6 +33,8 @@ import {
 } from './example-chart/chart-settings/example-chart-settings.component';
 import {CustomLastestValueComponent} from "./custom-lastest-value/custom-lastest-value.component";
 import {CustomAttributesValueComponent} from "./custom-attributes-value/custom-attributes-value.component";
+import {DeviceInfoComponent} from "./device-info/device-info.component";
+import {CustomChartComponent} from "./custom-chart/custom-chart.component";
 
 @NgModule({
   declarations: [
@@ -46,7 +48,8 @@ import {CustomAttributesValueComponent} from "./custom-attributes-value/custom-a
     ExampleOfUsingThirdPartyLibraryComponent,
     ExampleChartComponent,
     ExampleChartSettingsComponent,
-    CustomLastestValueComponent
+    CustomLastestValueComponent,
+    DeviceInfoComponent
   ],
   imports: [
     CommonModule,
@@ -55,7 +58,8 @@ import {CustomAttributesValueComponent} from "./custom-attributes-value/custom-a
     ChartModule,
     BasicWidgetConfigModule,
     WidgetConfigComponentsModule,
-    CustomAttributesValueComponent
+    CustomAttributesValueComponent,
+    CustomChartComponent
   ],
   exports: [
     ExampleTableComponent,
@@ -67,9 +71,12 @@ import {CustomAttributesValueComponent} from "./custom-attributes-value/custom-a
     ExampleTableCustomSubscriptionComponent,
     ExampleOfUsingThirdPartyLibraryComponent,
     ExampleChartComponent,
+    ExampleChartComponent,
     ExampleChartSettingsComponent,
     CustomLastestValueComponent,
-    CustomAttributesValueComponent
+    CustomAttributesValueComponent,
+    DeviceInfoComponent,
+    CustomChartComponent
   ]
 })
 

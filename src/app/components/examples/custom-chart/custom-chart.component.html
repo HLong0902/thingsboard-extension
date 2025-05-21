@@ -1,0 +1,23 @@
+<div class="tb-time-series-chart-panel">
+  <div class="tb-time-series-chart-overlay"></div>
+  <ng-container *ngIf="widgetComponent.dashboardWidget.showWidgetTitlePanel">
+    <ng-container *ngTemplateOutlet="widgetTitlePanel"></ng-container>
+  </ng-container>
+  <div class="tb-time-series-chart-content" [class]="legendClass">
+    <div #echartContainer class="tb-time-series-chart-shape"></div>
+    <div *ngIf="showLegend" class="tb-time-series-chart-legend tb-simple-legend">
+      <ng-container *ngFor="let legendKey of legendKeys">
+        <ng-container *ngTemplateOutlet="legendItem; context:{legendKey: legendKey, left: false}"></ng-container>
+      </ng-container>
+    </div>
+    <ng-template #legendItem let-legendKey="legendKey" let-left="left">
+      <div class="tb-time-series-chart-legend-item"
+           [class.left]="left">
+        <div class="tb-time-series-chart-legend-item-label">
+          <div class="tb-time-series-chart-legend-item-label-circle" [style]="{background: legendKey.dataKey.color}"></div>
+          <div class="legend legend-label-color" [innerHTML]="legendKey.dataKey.label | safe: 'html'"></div>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
