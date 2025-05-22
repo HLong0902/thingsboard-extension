@@ -9,12 +9,12 @@ enum FormatKey {
 }
 
 @Component({
-   selector: 'tb-device-info',
-   templateUrl: 'device-info.component.html',
-   styleUrls: ['device-info.component.scss']
+   selector: 'tb-device-tab',
+   templateUrl: 'device-tab.component.html',
+   styleUrls: ['device-tab.component.scss']
 })
 
-export class DeviceInfoComponent implements OnInit {
+export class DeviceTabComponent implements OnInit {
 
    @Input() ctx: WidgetContext;
 
@@ -22,10 +22,16 @@ export class DeviceInfoComponent implements OnInit {
    public entityName: string;
 
    ngOnInit(): void {
-      this.ctx.$scope.exampleTableComponent = this;
+      this.ctx.$scope.deviceTabComponent = this;
       this.entityName = this.ctx.widgetConfig.title;
       this.tableValues = new Array<any>();
    }
+  public onClick() {
+    const stateId = this.ctx.settings?.stateId;
+    if (stateId) {
+      this.ctx.stateController.openState(stateId, {}, true);
+    }
+  }
 
    public onDataUpdated(): void {
 

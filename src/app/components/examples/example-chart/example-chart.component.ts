@@ -325,23 +325,25 @@ export class ExampleChartComponent implements OnInit, AfterViewInit {
 
   private setupChartLines(): SeriesOption[] {
     const series: SeriesOption[] = [];
-    for(const [index, dataKey] of this.ctx.datasources[0].dataKeys.entries()) {
-      series.push({
-        id: index,
-        name: dataKey.label,
-        type: 'line',
-        showSymbol: false,
-        smooth: false,
-        step: false,
-        stackStrategy: 'all',
-        data: [],
-        lineStyle: {
-          color: dataKey.color
-        },
-        itemStyle: {
-          color: dataKey.color
-        }
-      })
+    if (this.ctx.datasources[0]) {
+      for(const [index, dataKey] of this.ctx.datasources[0].dataKeys.entries()) {
+        series.push({
+          id: index,
+          name: dataKey.label,
+          type: 'line',
+          showSymbol: false,
+          smooth: false,
+          step: false,
+          stackStrategy: 'all',
+          data: [],
+          lineStyle: {
+            color: dataKey.color
+          },
+          itemStyle: {
+            color: dataKey.color
+          }
+        })
+      }
     }
     return series;
   }

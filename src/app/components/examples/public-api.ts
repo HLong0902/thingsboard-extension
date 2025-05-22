@@ -13,4 +13,5 @@ export * from './custom-chart/custom-chart.component';
 export * from './example-chart/chart-settings/example-chart-settings.component';
 export * from './custom-lastest-value/custom-lastest-value.component';
 export * from './custom-attributes-value/custom-attributes-value.component';
-export * from './device-info/device-info.component';
+export * from './device-tab/device-tab.component';
+export * from './iot-edge-info/iot-edge-info.component';

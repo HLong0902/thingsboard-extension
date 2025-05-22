@@ -33,8 +33,9 @@ import {
 } from './example-chart/chart-settings/example-chart-settings.component';
 import {CustomLastestValueComponent} from "./custom-lastest-value/custom-lastest-value.component";
 import {CustomAttributesValueComponent} from "./custom-attributes-value/custom-attributes-value.component";
-import {DeviceInfoComponent} from "./device-info/device-info.component";
+import {DeviceTabComponent} from "./device-tab/device-tab.component";
 import {CustomChartComponent} from "./custom-chart/custom-chart.component";
+import {IoTEdgeInfoComponent} from "./iot-edge-info/iot-edge-info.component";
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import {CustomChartComponent} from "./custom-chart/custom-chart.component";
     ExampleChartComponent,
     ExampleChartSettingsComponent,
     CustomLastestValueComponent,
-    DeviceInfoComponent
+    DeviceTabComponent,
+    IoTEdgeInfoComponent
   ],
   imports: [
     CommonModule,
@@ -75,8 +77,9 @@ import {CustomChartComponent} from "./custom-chart/custom-chart.component";
     ExampleChartSettingsComponent,
     CustomLastestValueComponent,
     CustomAttributesValueComponent,
-    DeviceInfoComponent,
-    CustomChartComponent
+    DeviceTabComponent,
+    CustomChartComponent,
+    IoTEdgeInfoComponent
   ]
 })
 

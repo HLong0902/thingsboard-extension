@@ -1,13 +1,13 @@
-<div class="example-table flex flex-col gap-2">
+<div class="example-table flex flex-col gap-2" (click)="onClick()" style="cursor: pointer">
   <div class="header">
     {{ entityName }}
   </div>
   <div *ngFor="let key of tableValues">
     <div class="info-row" *ngIf="key">
       <div class="info-label">{{ key.key }}</div>
-      <span>&nbsp;&nbsp;</span>
+      <span>&nbsp;</span>
       <div class="badge">
-        <a class="badge-info" *ngIf="key.key === 'IP'" href="{{'http://'+key.value}}" target="_blank"
+        <a class="badge-info" *ngIf="key.key === 'IP'" href="{{'http://'+key.value}}" title="Configure" target="_blank"
            rel="noreferrer noopener">
           {{ key.value }}
         </a>
