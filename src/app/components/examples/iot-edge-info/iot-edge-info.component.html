@@ -1,20 +1,9 @@
-<div class="max-w-md mx-auto bg-white rounded-lg shadow-sm border border-gray-200">
-  <!-- Header -->
-  <div class="px-6 py-4 border-b border-gray-200">
-    <h2 class="text-2xl font-semibold text-gray-800">{{entityName}}</h2>
-  </div>
-
-  <!-- Device Information -->
-  <div class="px-6 py-4 space-y-4">
-    <div
-      *ngFor="let info of tableValues"
-      class="flex justify-between items-start py-2">
-          <span class="text-gray-600 font-medium flex-shrink-0 min-w-0 pr-4">
-            {{ info.key }}
-          </span>
-      <span class="text-gray-900 text-right font-medium break-all">
-            {{ info.value }}
-          </span>
-    </div>
-  </div>
-</div>
+<table style="width: 100%;">
+  <tr>
+    <th colspan="2" style="text-align: left;padding: 12px;font-size: 1.2em;">{{ title }}</th>
+  </tr>
+  <tr *ngFor="let item of deviceInfoRows">
+    <td style="padding: 10px;">{{ item.label }}</td>
+    <td style="padding: 10px;">{{ item.value }}</td>
+  </tr>
+</table>

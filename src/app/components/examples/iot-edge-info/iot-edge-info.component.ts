@@ -9,6 +9,15 @@ enum FormatKey {
   UNITS = 'units'
 }
 
+interface DeviceInfo {
+  [key: string]: string | number;
+}
+
+interface DeviceInfoRow {
+  label: string;
+  value: string;
+}
+
 @Component({
   selector: 'tb-iot-edge-info',
   templateUrl: './iot-edge-info.component.html',
@@ -18,36 +27,38 @@ export class IoTEdgeInfoComponent implements OnInit {
 
   @Input() ctx: WidgetContext;
 
-  public tableValues: Array<any>;
-  public entityName: string;
+  deviceInfoRows: DeviceInfoRow[] = [];
+  title: string;
+  key1: string;
+  key2: string;
 
   ngOnInit(): void {
     this.ctx.$scope.ioTEdgeInfoComponent = this;
-    this.entityName = this.ctx.settings?.name;
-    this.tableValues = new Array<any>();
+    this.title = this.ctx.settings?.title;
+    this.key1 = this.ctx.settings?.key1;
+    this.key2 = this.ctx.settings?.key2;
+    this.onDataUpdated();
   }
 
-
   public onDataUpdated(): void {
-    this.entityName = this.ctx.settings?.name;
     try {
-      var datas = JSON.parse(this.ctx.data[0].data[0][1]);
-      datas = datas['basic_information'];
-      for (let key in datas) {
-        this.tableValues[key] = datas[key];
+      let defaultData: DeviceInfo;
+      if (this.key2) {
+        defaultData = JSON.parse(this.ctx.data[0].data[0][1])[this.key1][this.key2];
+      } else {
+        defaultData = JSON.parse(this.ctx.data[0].data[0][1])[this.key1];
       }
+      const dataToUse = Object.keys(defaultData).length > 0 ? defaultData : defaultData;
+
+      // Convert the object into an array of label-value pairs for ngFor
+      this.deviceInfoRows = Object.entries(dataToUse).map(([key, value]) => ({
+        label: key,
+        value: String(value)
+      }));
+
     } catch (e) {
       console.log(e);
     }
     this.ctx.detectChanges();
-  }
-
-  private getFormatInfo<T>(dataKey: DataKey, formatKey: FormatKey): T {
-    let formatInfo = this.ctx[formatKey] as T;
-    if (isDefinedAndNotNull(dataKey[formatKey])) {
-      formatInfo = dataKey[formatKey] as T;
-    }
-
-    return formatInfo;
   }
 }
