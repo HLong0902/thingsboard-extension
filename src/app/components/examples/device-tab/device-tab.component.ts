@@ -1,31 +1,32 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {WidgetContext} from '@home/models/widget-component.models';
-import {formatValue, isDefinedAndNotNull} from '@core/public-api';
+import {formatValue, isDefinedAndNotNull, isNumeric} from '@core/public-api';
 import {DataKey} from '@shared/public-api';
 
 enum FormatKey {
-   DECIMALS = 'decimals',
-   UNITS = 'units'
+  DECIMALS = 'decimals',
+  UNITS = 'units'
 }
 
 @Component({
-   selector: 'tb-device-tab',
-   templateUrl: 'device-tab.component.html',
-   styleUrls: ['device-tab.component.scss']
+  selector: 'tb-device-tab',
+  templateUrl: 'device-tab.component.html',
+  styleUrls: ['device-tab.component.scss']
 })
 
 export class DeviceTabComponent implements OnInit {
 
-   @Input() ctx: WidgetContext;
+  @Input() ctx: WidgetContext;
 
-   public tableValues: Array<any>;
-   public entityName: string;
+  public tableValues: Array<any>;
+  public entityName: string;
 
-   ngOnInit(): void {
-      this.ctx.$scope.deviceTabComponent = this;
-      this.entityName = this.ctx.widgetConfig.title;
-      this.tableValues = new Array<any>();
-   }
+  ngOnInit(): void {
+    this.ctx.$scope.deviceTabComponent = this;
+    this.entityName = this.ctx.widgetConfig.title;
+    this.tableValues = new Array<any>();
+  }
+
   public onClick() {
     const stateId = this.ctx.settings?.stateId;
     if (stateId) {
@@ -33,41 +34,31 @@ export class DeviceTabComponent implements OnInit {
     }
   }
 
-   public onDataUpdated(): void {
-
-     for (var i = 0; i<= this.ctx.data.length; i++) {
-       let data = this.ctx.data[i];
-       if (data) {
-         let rowName: string =  data.dataKey.label;
-         let rowValue: string =  data.data != null && data.data.length > 0 ? data.data[0][1] : '';
-         this.tableValues[i] = {"key": rowName, "value": formatValue(
-             rowValue,
-             this.getFormatInfo<number>(data.dataKey, FormatKey.DECIMALS),
-             this.getFormatInfo<string>(data.dataKey, FormatKey.UNITS),
-             false)};
-       }
-     }
-
-      // for (const key of this.ctx.data) {
-      //    if (key.data.length) {
-      //       const rowName: string =  key.dataKey.label;
-      //       const rowValue: string = formatValue(
-      //           key.data[0][1],
-      //           this.getFormatInfo<number>(key.dataKey, FormatKey.DECIMALS),
-      //           this.getFormatInfo<string>(key.dataKey, FormatKey.UNITS),
-      //           false);
-      //       this.tableValues[rowName] = rowValue;
-      //    }
-      // }
-      this.ctx.detectChanges();
-   }
-
-   private getFormatInfo<T>(dataKey: DataKey, formatKey: FormatKey): T {
-      let formatInfo = this.ctx[formatKey] as T;
-      if (isDefinedAndNotNull(dataKey[formatKey])) {
-         formatInfo = dataKey[formatKey] as T;
+  public onDataUpdated(): void {
+    let props = this.ctx.settings;
+    try {
+      let data = JSON.parse(this.ctx.data[0].data[0][1])['basic_information'];
+      let keys = Object.keys(props);
+      for (let i = 0; i < keys.length; i++) {
+        if (keys[i] !== 'stateId' && !isNumeric(keys[i])) {
+          try {
+            let rowName: string = props[keys[i]];
+            let rowValue: string = data[rowName];
+            this.tableValues[i] = {"key": rowName, "value": rowValue};
+          } catch (e) {}
+        }
       }
+    } catch (e) {}
 
-      return formatInfo;
-   }
+    this.ctx.detectChanges();
+  }
+
+  private getFormatInfo<T>(dataKey: DataKey, formatKey: FormatKey): T {
+    let formatInfo = this.ctx[formatKey] as T;
+    if (isDefinedAndNotNull(dataKey[formatKey])) {
+      formatInfo = dataKey[formatKey] as T;
+    }
+
+    return formatInfo;
+  }
 }
