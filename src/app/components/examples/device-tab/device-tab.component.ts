@@ -28,23 +28,30 @@ export class DeviceTabComponent implements OnInit {
   }
 
   public onClick() {
-    const stateId = this.ctx.settings?.stateId;
+    console.log("-----------------");
+    let stateId = this.ctx.settings?.stateId;
+    //@ts-ignore
+    let entityId = this.ctx?.datasources[0]?.entityId;
+    console.log("-------" + entityId);
     if (stateId) {
-      this.ctx.stateController.openState(stateId, {}, true);
+      this.ctx.stateController.openState(stateId, this.ctx.stateController.getStateParams(), true);
     }
   }
 
   public onDataUpdated(): void {
     let props = this.ctx.settings;
     try {
+      console.log("device-tab" + this.ctx.data);
       let data = JSON.parse(this.ctx.data[0].data[0][1])['basic_information'];
       let keys = Object.keys(props);
       for (let i = 0; i < keys.length; i++) {
         if (keys[i] !== 'stateId' && !isNumeric(keys[i])) {
           try {
             let rowName: string = props[keys[i]];
-            let rowValue: string = data[rowName];
-            this.tableValues[i] = {"key": rowName, "value": rowValue};
+            if (rowName && data[rowName]) {
+              let rowValue: string = data[rowName];
+              this.tableValues[i] = {"key": rowName, "value": rowValue};
+            }
           } catch (e) {}
         }
       }
