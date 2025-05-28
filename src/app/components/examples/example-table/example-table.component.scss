@@ -1,43 +1,19 @@
-:host {
-  display: block;
-  height: 100%;
+.tb-hl-content {
+  font-size: 1vw !important;
+  padding: 8px 0;
+  font-weight: 500;
+}
 
-  .example-table {
-    height: 100%;
+.tb-hl-header {
+  font-size: 1.5vw !important;
+}
 
-    .header {
-      font-weight: 500;
-      font-size: 30px;
-      line-height: 36px;
-      color: #757575;
-    }
+@media screen and (max-width: 960px) {
+  .tb-hl-content {
+    font-size: 18px !important;
+  }
 
-    .content {
-      border: 1px solid #0000001E;
-      border-radius: 4px;
-      overflow: auto;
-
-      .content-column {
-        padding: 0 15px;
-        height: 60px;
-
-        .content-value {
-          font-weight: 500;
-          font-size: 30px;
-          line-height: 36px;
-        }
-      }
-
-      .content-column:not(:last-child){
-        border-bottom: 1px solid #0000001E;
-      }
-    }
-
-    .content-key {
-      font-size: 18px;
-      line-height: 24px;
-      letter-spacing: 0.4px;
-      color: #757575;
-    }
+  .tb-hl-header {
+    font-size: 12px !important;
   }
 }

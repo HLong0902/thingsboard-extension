@@ -1,11 +1,16 @@
-<div class="example-table flex flex-col gap-2">
-  <div class="header">
-    {{entityName}}
-  </div>
-  <div class="content">
-    <div class="content-column flex flex-row items-center justify-between" *ngFor="let key of tableValues | keyvalue">
-      <div class="content-key">{{key.key}}</div>
-      <div class="content-value">{{key.value}}</div>
-    </div>
-  </div>
-</div>
+<table style="width: 100%;">
+  <tr>
+    <th class="tb-hl-header" colspan="2" style="text-align: left;font-size: 1.5vw;font-weight: 600;">{{ title }}</th>
+  </tr>
+  <tr *ngFor="let item of tableValues | keyvalue">
+    <td class="tb-hl-content">{{ item.key }}</td>
+    <td>
+      <a class="tb-hl-content" *ngIf="item.key === 'IP'" href="{{'http://'+item.value}}" title="Configure" target="_blank"
+         rel="noreferrer noopener">
+        {{ item.value }}
+      </a>
+      <span class="tb-hl-content" *ngIf="item.key !== 'IP'">{{ item.value }}</span>
+    </td>
+  </tr>
+</table>
+

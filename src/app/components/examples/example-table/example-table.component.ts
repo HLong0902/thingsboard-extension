@@ -1,11 +1,19 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { WidgetContext } from '@home/models/widget-component.models';
-import { formatValue, isDefinedAndNotNull } from '@core/public-api';
-import { DataKey } from '@shared/public-api';
+import {Component, Input, OnInit} from '@angular/core';
+import {WidgetContext} from '@home/models/widget-component.models';
+import {formatValue, isDefinedAndNotNull} from '@core/public-api';
+import {DataKey} from '@shared/public-api';
 
 enum FormatKey {
   DECIMALS = 'decimals',
   UNITS = 'units'
+}
+interface DeviceInfo {
+  [key: string]: string | number;
+}
+
+interface DeviceInfoRow {
+  label: string;
+  value: string;
 }
 
 @Component({
@@ -18,24 +26,24 @@ export class ExampleTableComponent implements OnInit {
 
   @Input() ctx: WidgetContext;
 
+  title: string;
   public tableValues: {[key: string]: any} = {};
-  public entityName: string;
 
   ngOnInit(): void {
     this.ctx.$scope.exampleTableComponent = this;
-    this.entityName = this.ctx.datasources[0].entityName;
+    this.title = this.ctx.settings?.title;
+    this.onDataUpdated();
   }
 
   public onDataUpdated(): void {
     for (const key of this.ctx.data) {
       if (key.data.length) {
         const rowName: string =  key.dataKey.label;
-        const rowValue: string = formatValue(
+        this.tableValues[rowName] = formatValue(
           key.data[0][1],
           this.getFormatInfo<number>(key.dataKey, FormatKey.DECIMALS),
           this.getFormatInfo<string>(key.dataKey, FormatKey.UNITS),
           false);
-        this.tableValues[rowName] = rowValue;
       }
     }
     this.ctx.detectChanges();

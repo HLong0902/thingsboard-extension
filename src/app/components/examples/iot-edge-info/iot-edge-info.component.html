@@ -1,15 +1,15 @@
 <table style="width: 100%;">
   <tr>
-    <th colspan="2" style="text-align: left;padding: 12px;font-size: 1.2em;">{{ title }}</th>
+    <th colspan="2" style="text-align: left;font-size: 1.5vw;font-weight: 600">{{ title }}</th>
   </tr>
-  <tr *ngFor="let item of deviceInfoRows">
-    <td style="padding: 10px;">{{ item.label }}</td>
-    <td style="padding: 10px;">
-      <a *ngIf="item.label === 'IP'" href="{{'http://'+item.value}}" title="Configure" target="_blank"
-         rel="noreferrer noopener">
-        {{ item.value }}
-      </a>
-      <span *ngIf="item.label !== 'IP'" >{{ item.value }}</span>
-    </td>
+  <tr *ngFor="let item of deviceInfoRows" >
+      <td class="tb-hl-content">{{ item.label }}</td>
+      <td>
+        <a class="tb-hl-content" *ngIf="item.label === 'IP'" href="{{'http://'+item.value}}" title="Configure" target="_blank"
+           rel="noreferrer noopener">
+          {{ item.value }}
+        </a>
+        <span class="tb-hl-content" *ngIf="item.label !== 'IP'" >{{ item.value }}</span>
+      </td>
   </tr>
 </table>

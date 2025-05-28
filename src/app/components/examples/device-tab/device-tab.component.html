@@ -5,7 +5,7 @@
   <div *ngFor="let key of tableValues">
     <div class="info-row" *ngIf="key">
       <div class="info-label">{{ key.key }}</div>
-      <span>&nbsp;</span>
+      <span class="badge-info"> </span>
       <div class="badge">
         <a class="badge-info" *ngIf="key.key === 'IP'" href="{{'http://'+key.value}}" title="Configure" target="_blank"
            rel="noreferrer noopener">

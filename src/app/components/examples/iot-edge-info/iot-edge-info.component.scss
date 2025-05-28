@@ -1,0 +1,19 @@
+.tb-hl-content {
+  font-size: 1vw !important;
+  padding: 8px 0;
+  font-weight: 500;
+}
+
+.tb-hl-header {
+  font-size: 1.5vw !important;
+}
+
+@media screen and (max-width: 960px) {
+  .tb-hl-content {
+    font-size: 18px !important;
+  }
+
+  .tb-hl-header {
+    font-size: 12px !important;
+  }
+}

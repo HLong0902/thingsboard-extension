@@ -25,23 +25,23 @@ export class DeviceTabComponent implements OnInit {
     this.ctx.$scope.deviceTabComponent = this;
     this.entityName = this.ctx.widgetConfig.title;
     this.tableValues = new Array<any>();
+    this.onDataUpdated();
   }
 
   public onClick() {
-    console.log("-----------------");
     let stateId = this.ctx.settings?.stateId;
-    //@ts-ignore
-    let entityId = this.ctx?.datasources[0]?.entityId;
-    console.log("-------" + entityId);
     if (stateId) {
-      this.ctx.stateController.openState(stateId, this.ctx.stateController.getStateParams(), true);
+    const params = {
+      entityId: this.ctx.stateController.getStateParams().entityId,
+      entityName: this.ctx.stateController.getStateParams().entityName,
+    };
+      this.ctx.stateController.updateState(stateId, params, false);
     }
   }
 
   public onDataUpdated(): void {
     let props = this.ctx.settings;
     try {
-      console.log("device-tab" + this.ctx.data);
       let data = JSON.parse(this.ctx.data[0].data[0][1])['basic_information'];
       let keys = Object.keys(props);
       for (let i = 0; i < keys.length; i++) {
@@ -52,10 +52,14 @@ export class DeviceTabComponent implements OnInit {
               let rowValue: string = data[rowName];
               this.tableValues[i] = {"key": rowName, "value": rowValue};
             }
-          } catch (e) {}
+          } catch (e) {
+            console.error(e);
+          }
         }
       }
-    } catch (e) {}
+    } catch (e) {
+      console.error(e);
+    }
 
     this.ctx.detectChanges();
   }
