@@ -273,7 +273,7 @@ export class ExampleChartComponent implements OnInit, AfterViewInit {
     const labelTextElement: HTMLElement = this.renderer.createElement('div');
     this.renderer.setProperty(labelTextElement, 'innerHTML', this.sanitizer.sanitize(SecurityContext.HTML, param.seriesName));
     this.renderer.setStyle(labelTextElement, 'font-family', 'Roboto');
-    this.renderer.setStyle(labelTextElement, 'font-size', '12px');
+    this.renderer.setStyle(labelTextElement, 'font-size', '14px');
     this.renderer.setStyle(labelTextElement, 'font-style', 'normal');
     this.renderer.setStyle(labelTextElement, 'font-weight', 400);
     this.renderer.setStyle(labelTextElement, 'line-height', '16px');
@@ -289,9 +289,9 @@ export class ExampleChartComponent implements OnInit, AfterViewInit {
     this.renderer.setStyle(valueElement, 'flex', '1');
     this.renderer.setStyle(valueElement, 'text-align', 'end');
     this.renderer.setStyle(valueElement, 'font-family', 'Roboto');
-    this.renderer.setStyle(valueElement, 'font-size', '12px');
+    this.renderer.setStyle(valueElement, 'font-size', '14px');
     this.renderer.setStyle(valueElement, 'font-style', 'normal');
-    this.renderer.setStyle(valueElement, 'font-weight', 500);
+    // this.renderer.setStyle(valueElement, 'font-weight', 500);
     this.renderer.setStyle(valueElement, 'line-height', '16px');
     this.renderer.setStyle(valueElement, 'color', 'rgba(0, 0, 0, 0.76)');
     this.renderer.appendChild(labelValueElement, valueElement);

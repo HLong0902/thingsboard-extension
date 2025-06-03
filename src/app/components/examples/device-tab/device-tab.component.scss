@@ -6,8 +6,8 @@
     height: 100%;
 
     .header {
-      font-weight: 600;
-      font-size: 1.2vw;
+      font-weight: bold;
+      font-size: 18px;
       //line-height: 36px;
       color: black;
     }
@@ -21,8 +21,8 @@
 
   .info-label {
     min-width: fit-content;
-    font-size: 0.8vw;
-    font-weight: 400;
+    font-size: 14px;
+    //font-weight: 400;
     color: #555;
   }
 
@@ -39,8 +39,8 @@
   .badge-info {
     height: fit-content;
     padding: 4px 8px;
-    font-size: 0.8vw;
-    font-weight: bold;
+    font-size: 14px;
+    font-weight: normal;
   }
 
   &:last-child .badge-info {
@@ -48,22 +48,22 @@
   }
 }
 
-@media screen and (max-width: 960px) {
-  :host {
-    .example-table {
-      .header {
-        font-size: 18px;
-      }
-    }
-  }
-
-  .info-row {
-    .info-label {
-      font-size: 12px;
-    }
-    .badge-info {
-      height: 24px;
-      font-size: 12px;
-    }
-  }
-}
+//@media screen and (max-width: 960px) {
+//  :host {
+//    .example-table {
+//      .header {
+//        font-size: 18px;
+//      }
+//    }
+//  }
+//
+//  .info-row {
+//    .info-label {
+//      font-size: 12px;
+//    }
+//    .badge-info {
+//      height: 24px;
+//      font-size: 12px;
+//    }
+//  }
+//}

@@ -121,7 +121,7 @@ ngAfterViewInit(): void {
     dataZoom: [
       {
         type: 'inside',
-        disabled: false,
+        disabled: true,
         realtime: true,
         filterMode:  'none'
       },
@@ -281,7 +281,7 @@ private constructTooltipSeriesElement(param: CallbackDataParams, index: number):
   const labelTextElement: HTMLElement = this.renderer.createElement('div');
   this.renderer.setProperty(labelTextElement, 'innerHTML', this.sanitizer.sanitize(SecurityContext.HTML, param.seriesName));
   this.renderer.setStyle(labelTextElement, 'font-family', 'Roboto');
-  this.renderer.setStyle(labelTextElement, 'font-size', '12px');
+  this.renderer.setStyle(labelTextElement, 'font-size', '14px');
   this.renderer.setStyle(labelTextElement, 'font-style', 'normal');
   this.renderer.setStyle(labelTextElement, 'font-weight', 400);
   this.renderer.setStyle(labelTextElement, 'line-height', '16px');
