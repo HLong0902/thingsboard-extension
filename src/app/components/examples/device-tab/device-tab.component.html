@@ -1,18 +1,15 @@
-<div class="example-table flex flex-col gap-2" (click)="onClick()" style="cursor: pointer">
-  <div class="header">
-    {{ entityName }}
-  </div>
-  <div *ngFor="let key of tableValues">
-    <div class="info-row" *ngIf="key">
-      <div class="info-label">{{ key.key }}</div>
-      <span class="badge-info"> </span>
-      <div class="badge">
-        <a class="badge-info" *ngIf="key.key === 'IP'" href="{{'http://'+key.value}}" title="Configure" target="_blank"
-           rel="noreferrer noopener">
-          {{ key.value }}
-        </a>
-        <span class="badge-info" *ngIf="key.key !== 'IP'">{{ key.value }}</span>
-      </div>
-    </div>
-  </div>
-</div>
+<table (click)="onClick()" style="width: 100%;cursor: pointer;table-layout: fixed;">
+  <colgroup>
+    <col style="width: fit-content; white-space: nowrap;" />
+    <col style="width: auto;" />
+  </colgroup>
+  <tr>
+    <th colspan="2" style="text-align: left;font-size: 18px;">{{ entityName }}</th>
+  </tr>
+  <tr *ngFor="let key of tableValues">
+    <td *ngIf="key" class="tb-hl-content">{{ key.key }}</td>
+    <td *ngIf="key" class="tb-hl-content">{{ key.value }}</td>
+  </tr>
+  <div style="height: auto"></div>
+</table>
+

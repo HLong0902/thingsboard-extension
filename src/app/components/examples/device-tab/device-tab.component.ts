@@ -44,16 +44,18 @@ export class DeviceTabComponent implements OnInit {
     try {
       let data = JSON.parse(this.ctx.data[0].data[0][1])['basic_information'];
       let keys = Object.keys(props);
-      for (let i = 0; i < keys.length; i++) {
-        if (keys[i] !== 'stateId' && !isNumeric(keys[i])) {
-          try {
-            let rowName: string = props[keys[i]];
-            if (rowName && data[rowName]) {
-              let rowValue: string = data[rowName];
-              this.tableValues[i] = {"key": rowName, "value": rowValue};
+      if (keys.length > 0) {
+        for (let i = 0; i < keys.length; i++) {
+          if (keys[i] !== 'stateId' && !isNumeric(keys[i])) {
+            try {
+              let rowName: string = props[keys[i]];
+              if (rowName && data[rowName]) {
+                let rowValue: string = data[rowName];
+                this.tableValues[i] = {"key": rowName, "value": rowValue};
+              }
+            } catch (e) {
+              console.error(e);
             }
-          } catch (e) {
-            console.error(e);
           }
         }
       }

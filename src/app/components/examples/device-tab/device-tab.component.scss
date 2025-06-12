@@ -1,69 +1,9 @@
-:host {
-  display: block;
-  height: 100%;
-
-  .example-table {
-    height: 100%;
-
-    .header {
-      font-weight: bold;
-      font-size: 18px;
-      //line-height: 36px;
-      color: black;
-    }
-  }
+.tb-hl-content {
+  font-size: 14px !important;
+  padding: 4px 0;
+  font-weight: normal;
 }
 
-.info-row {
-  display: flex;
-  align-items: center;
-  //margin-bottom: 8px;
-
-  .info-label {
-    min-width: fit-content;
-    font-size: 14px;
-    //font-weight: 400;
-    color: #555;
-  }
-
-  .badge {
-    background: #f0f0f0;
-    width: fit-content;
-    border-radius: 6px;
-    border: #d4d4d4 1px solid;
-    //padding: 8px;
-    display: inline-flex;
-    align-items: center;
-  }
-
-  .badge-info {
-    height: fit-content;
-    padding: 4px 8px;
-    font-size: 14px;
-    font-weight: normal;
-  }
-
-  &:last-child .badge-info {
-    padding-bottom: 0;
-  }
+.tb-hl-header {
+  font-size: 18px !important;
 }
-
-//@media screen and (max-width: 960px) {
-//  :host {
-//    .example-table {
-//      .header {
-//        font-size: 18px;
-//      }
-//    }
-//  }
-//
-//  .info-row {
-//    .info-label {
-//      font-size: 12px;
-//    }
-//    .badge-info {
-//      height: 24px;
-//      font-size: 12px;
-//    }
-//  }
-//}
